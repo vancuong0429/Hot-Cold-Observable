@@ -38,7 +38,7 @@ onNext, subscriber2: 2
 # Hot Observable
 ![Image of hot observable](https://cdn-images-1.medium.com/max/1600/1*gSwdDY0PoF0hUR0yGcNpZA.png)
 - Observable emit item when created
-- Observable don't again emit when has a new subscribe
+- Observable doesn't again emit when has a new subscribe
 * Example
 ```kotlin
 val connectable = cold.publish()
