@@ -1,6 +1,7 @@
 # Hot-Cold-Observable
 
 # Cold Observable
+![Image of cold observable](https://cdn-images-1.medium.com/max/1600/1*mKI4mNHesE1bfXk6YJ_rEA.png)
 - Observable only emit item when has subscribe
 - It will emit again when has new subscribe
 * Example:
@@ -35,6 +36,7 @@ Source Emit 2
 onNext, subscriber2: 2
 ```
 # Hot Observable
+![Image of hot observable](https://cdn-images-1.medium.com/max/1600/1*gSwdDY0PoF0hUR0yGcNpZA.png)
 - Observable emit item when created
 - Observable don't again emit when has a new subscribe
 * Example
