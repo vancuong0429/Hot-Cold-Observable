@@ -41,22 +41,35 @@ onNext, subscriber2: 2
 - Observable doesn't again emit when has a new subscribe
 * Example
 ```kotlin
-val connectable: ConnectableObservable<Int> = coldObservable.publish()
-connectable.subscribe({
+var coldObservable = Observable.interval(1, TimeUnit.SECONDS)
+    .doOnNext {
+        println("Emitted $it")
+    }
+var connectableObservable: ConnectableObservable<Long> = coldObservable.publish()
+
+connectableObservable.connect()
+
+Thread.sleep(2000)
+
+connectableObservable.subscribe({
     println("onNext, subscriber1: $it")
 }, {})
-connectable.subscribe({
-    println("onNext, subscriber2: $it")
-}, {})
-connectable.connect()
+
+Thread.sleep(2000)
+connectableObservable.subscribe({
+    println( "onNext, subscriber2: $it")
+}, {}))
 ```
 * Result
 ```kotlin
-Source Emit 0
-onNext, subscriber1: 0
-onNext, subscriber2: 0
-Source Emit 1
-onNext, subscriber1: 1
-onNext, subscriber2: 1
+Emitted 0
+Emitted 1
+Emitted 2
+    onNext, subscriber1: 2
+Emitted 3
+    onNext, subscriber1: 3
+Emitted 4
+    onNext, subscriber1: 4
+    onNext, subscriber2: 4
 ```
 # Create Hot Observable
