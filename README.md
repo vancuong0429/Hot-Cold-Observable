@@ -41,7 +41,7 @@ onNext, subscriber2: 2
 - Observable doesn't again emit when has a new subscribe
 * Example
 ```kotlin
-val connectable = cold.publish()
+val connectable: ConnectableObservable<Int> = coldObservable.publish()
 connectable.subscribe({
     println("onNext, subscriber1: $it")
 }, {})
